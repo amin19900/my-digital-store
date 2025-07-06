@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login | MyDigitalStore</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .lang-buttons {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .lang-btn {
+      margin: 0 5px;
+      padding: 5px 10px;
+      border: none;
+      background: #ddd;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .lang-btn:hover {
+      background: #bbb;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="lang-buttons">
+      <button class="lang-btn" onclick="setLang('en')">English</button>
+      <button class="lang-btn" onclick="setLang('ar')">العربية</button>
+      <button class="lang-btn" onclick="setLang('fr')">Français</button>
+    </div>
+    <h2 id="login-title">Login</h2>
+    <input type="email" placeholder="Email" id="email" />
+    <input type="password" placeholder="Password" id="password" />
+    <button onclick="login()" id="login-btn">Login</button>
+  </div>
+
+  <script>
+    const translations = {
+      en: {
+        title: "Login",
+        email: "Email",
+        password: "Password",
+        btn: "Login"
+      },
+      ar: {
+        title: "تسجيل الدخول",
+        email: "البريد الإلكتروني",
+        password: "كلمة المرور",
+        btn: "دخول"
+      },
+      fr: {
+        title: "Connexion",
+        email: "Email",
+        password: "Mot de passe",
+        btn: "Se connecter"
+      }
+    };
+
+    function setLang(lang) {
+      document.getElementById("login-title").innerText = translations[lang].title;
+      document.getElementById("email").placeholder = translations[lang].email;
+      document.getElementById("password").placeholder = translations[lang].password;
+      document.getElementById("login-btn").innerText = translations[lang].btn;
+      if (lang === "ar") {
+        document.body.style.direction = "rtl";
+      } else {
+        document.body.style.direction = "ltr";
+      }
+    }
+
+    function login() {
+      alert("Login logic not implemented yet.");
+    }
+
+    setLang('en');
+  </script>
+
+</body>
+</html>
