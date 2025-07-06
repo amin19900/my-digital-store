@@ -5,47 +5,118 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Authentication | MyDigitalStore</title>
   <style>
-    /* Reset بسيط */
+    /* Reset */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-
     body {
       background: #f2f2f2;
+      min-height: 100vh;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      height: 100vh;
     }
 
+    /* --- شريط الإعلانات --- */
+    .ad-banner {
+      width: 100%;
+      height: 150px;
+      background: #222;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    .slides {
+      display: flex;
+      width: 400%; /* 4 إعلانات */
+      animation: slideAnimation 16s infinite;
+    }
+    .slide {
+      flex: 1 0 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      user-select: none;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+    .slide:nth-child(1) {
+      background: #111;
+      justify-content: flex-start;
+      padding-left: 40px;
+    }
+    .slide:nth-child(2) {
+      background: #000;
+      justify-content: center;
+    }
+    .slide:nth-child(3) {
+      background: #111;
+      justify-content: flex-start;
+      padding-left: 40px;
+    }
+    .slide:nth-child(4) {
+      background: #333;
+      justify-content: center;
+    }
+    img.ad-image {
+      max-height: 110px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(255,255,255,0.2);
+    }
+    video.ad-video {
+      max-height: 110px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(255,255,255,0.3);
+    }
+    .text-ad {
+      font-size: 26px;
+      color: #ffdd57;
+      text-shadow: 1px 1px 3px #000;
+    }
+    @keyframes slideAnimation {
+      0% { transform: translateX(0); }
+      20% { transform: translateX(0); }
+      25% { transform: translateX(-100%); }
+      45% { transform: translateX(-100%); }
+      50% { transform: translateX(-200%); }
+      70% { transform: translateX(-200%); }
+      75% { transform: translateX(-300%); }
+      95% { transform: translateX(-300%); }
+      100% { transform: translateX(0); }
+    }
+
+    /* --- حاوية المصادقة --- */
     .auth-container {
       background: #fff;
       width: 400px;
       padding: 30px 40px;
       border-radius: 12px;
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      margin-bottom: 50px;
     }
-
     .auth-container h2 {
       text-align: center;
       margin-bottom: 25px;
       color: #333;
     }
-
     .form-group {
       margin-bottom: 20px;
     }
-
     label {
       display: block;
       margin-bottom: 8px;
       color: #555;
       font-weight: 600;
     }
-
     input[type="text"],
     input[type="email"],
     input[type="password"] {
@@ -56,14 +127,12 @@
       font-size: 15px;
       transition: border-color 0.3s ease;
     }
-
     input[type="text"]:focus,
     input[type="email"]:focus,
     input[type="password"]:focus {
       border-color: #4a90e2;
       outline: none;
     }
-
     button {
       width: 100%;
       padding: 14px;
@@ -76,16 +145,13 @@
       font-weight: 700;
       transition: background-color 0.3s ease;
     }
-
     button:hover {
       background-color: #357ABD;
     }
-
     .toggle-btns {
       margin: 20px 0 10px;
       text-align: center;
     }
-
     .toggle-btns button {
       width: auto;
       padding: 8px 20px;
@@ -96,19 +162,47 @@
       border-radius: 8px;
       transition: background-color 0.3s ease;
     }
-
     .toggle-btns button.active {
       background-color: #4a90e2;
       color: white;
     }
-
     .hidden {
       display: none;
     }
+
   </style>
 </head>
 <body>
 
+  <!-- شريط الإعلانات -->
+  <div class="ad-banner">
+    <div class="slides">
+      <!-- إعلان صورة لشركة -->
+      <div class="slide">
+        <img class="ad-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/320px-Netflix_2015_logo.svg.png" alt="Netflix Ad" />
+      </div>
+
+      <!-- إعلان فيديو صغير -->
+      <div class="slide">
+        <video class="ad-video" autoplay muted loop playsinline>
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <!-- إعلان نصي ملون -->
+      <div class="slide">
+        <div class="text-ad">Super Sale! Up to 50% Off!</div>
+      </div>
+
+      <!-- إعلان صورة منتج -->
+      <div class="slide">
+        <img class="ad-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Apple_logo_black.svg/320px-Apple_logo_black.svg.png" alt="Apple Ad" />
+      </div>
+    </div>
+  </div>
+
+  <!-- حاوية المصادقة -->
   <div class="auth-container">
     <div class="toggle-btns">
       <button id="login-btn" class="active">Login</button>
@@ -153,10 +247,9 @@
   </div>
 
   <script>
-    // التحكم في تبديل النماذج
+    // تبديل النماذج
     const loginBtn = document.getElementById('login-btn');
     const signupBtn = document.getElementById('signup-btn');
-
     const loginForm = document.getElementById('login-form');
     const signupForm = document.getElementById('signup-form');
 
@@ -174,7 +267,7 @@
       loginForm.classList.add('hidden');
     });
 
-    // تحقق بسيط عند التسجيل
+    // تحقق بسيط للتسجيل
     signupForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const password = document.getElementById('signup-password').value;
@@ -185,15 +278,13 @@
         return;
       }
 
-      // هنا تقدر تضيف إرسال البيانات للباك إند
       alert("Sign up successful! (Simulation)");
       signupForm.reset();
     });
 
-    // تسجيل دخول - فقط محاكاة
+    // تسجيل دخول - محاكاة فقط
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      // هنا تقدر تضيف إرسال بيانات الدخول للتحقق
       alert("Logged in! (Simulation)");
       loginForm.reset();
     });
