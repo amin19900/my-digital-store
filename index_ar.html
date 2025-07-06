@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <title>موقعي بالعربية</title>
+  <style>
+    body { font-family: Arial, sans-serif; direction: rtl; }
+    .language-switcher img {
+      width: 40px;
+      cursor: pointer;
+      margin: 0 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="language-switcher">
+    <img src="flags/ar.png" alt="العربية" onclick="changeLanguage('ar')" />
+    <img src="flags/fr.png" alt="Français" onclick="changeLanguage('fr')" />
+    <img src="flags/en.png" alt="English" onclick="changeLanguage('en')" />
+  </div>
+
+  <h1>مرحبا بكم في موقعي</h1>
+  <p>هذه الصفحة باللغة العربية.</p>
+
+  <script>
+    function changeLanguage(lang) {
+      if(lang === 'ar') {
+        window.location.href = 'index_ar.html';
+      } else if(lang === 'fr') {
+        window.location.href = 'index_fr.html';
+      } else if(lang === 'en') {
+        window.location.href = 'index_en.html';
+      }
+    }
+  </script>
+</body>
+</html>
