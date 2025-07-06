@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Website in English</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      direction: ltr;
+      margin: 20px;
+    }
+    .language-switcher img {
+      width: 40px;
+      cursor: pointer;
+      margin: 0 5px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <div class="language-switcher">
+    <img src="flags/ar.png" alt="العربية" onclick="changeLanguage('ar')" />
+    <img src="flags/fr.png" alt="Français" onclick="changeLanguage('fr')" />
+    <img src="flags/en.png" alt="English" onclick="changeLanguage('en')" />
+  </div>
+
+  <h1>Welcome to my website</h1>
+  <p>This is the English version of the page.</p>
+
+  <script>
+    function changeLanguage(lang) {
+      if(lang === 'ar') {
+        window.location.href = 'index_ar.html';
+      } else if(lang === 'fr') {
+        window.location.href = 'index_fr.html';
+      } else if(lang === 'en') {
+        window.location.href = 'index_en.html';
+      }
+    }
+  </script>
+</body>
+</html>
