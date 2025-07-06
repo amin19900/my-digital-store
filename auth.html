@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Authentication | MyDigitalStore</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .auth-container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #2193b0, #6dd5ed);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .lang-buttons, .toggle-buttons {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .lang-btn, .toggle-btn {
+      margin: 0 5px;
+      padding: 5px 10px;
+      border: none;
+      background: #ddd;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .lang-btn:hover, .toggle-btn:hover {
+      background: #bbb;
+    }
+
+    .form-section {
+      display: none;
+    }
+
+    .form-section.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-container">
+    <div class="lang-buttons">
+      <button class="lang-btn" onclick="setLang('en')">English</button>
+      <button class="lang-btn" onclick="setLang('ar')">العربية</button>
+      <button class="lang-btn" onclick="setLang('fr')">Français</button>
+    </div>
+
+    <div class="toggle-buttons">
+      <button class="toggle-btn" onclick="showForm('login')">Login</button>
+      <button class="toggle-btn" onclick="showForm('signup')">Sign Up</button>
+    </div>
+
+    <!-- Login Form -->
+    <div id="login-form" class="form-section active">
+      <h2 id="login-title">Login</h2>
+      <input type="email" id="login-email" placeholder="Email">
+      <input type="password" id="login-password" placeholder="Password">
+      <button onclick="login()" id="login-btn">Login</button>
+    </div>
+
+    <!-- Sign Up Form -->
+    <div id="signup-form" class="form-section">
+      <h2 id="signup-title">Sign Up</h2>
+      <input type="text" id="signup-name" placeholder="Full Name">
+      <input type="email" id="signup-email" placeholder="Email">
+      <input type="password" id="signup-password" placeholder="Password">
+      <button onclick="signup()" id="signup-btn">Sign Up</button>
+    </div>
+  </div>
+
+  <script>
+    const translations = {
+      en: {
+        loginTitle: "Login",
+        signupTitle: "Sign Up",
+        email: "Email",
+        password: "Password",
+        name: "Full Name",
+        loginBtn: "Login",
+        signupBtn: "Sign Up"
+      },
+      ar: {
+        loginTitle: "تسجيل الدخول",
+        signupTitle: "إنشاء حساب",
+        email: "البريد الإلكتروني",
+        password: "كلمة المرور",
+        name: "الاسم الكامل",
+        loginBtn: "دخول",
+        signupBtn: "تسجيل"
+      },
+      fr: {
+        loginTitle: "Connexion",
+        signupTitle: "Créer un compte",
+        email: "Email",
+        password: "Mot de passe",
+        name: "Nom complet",
+        loginBtn: "Se connecter",
+        signupBtn: "S'inscrire"
+      }
+    };
+
+    function setLang(lang) {
+      document.getElementById("login-title").innerText = translations[lang].loginTitle;
+      document.getElementById("signup-title").innerText = translations[lang].signupTitle;
+
+      document.getElementById("login-email").placeholder = translations[lang].email;
+      document.getElementById("login-password").placeholder = translations[lang].password;
+      document.getElementById("login-btn").innerText = translations[lang].loginBtn;
+
+      document.getElementById("signup-name").placeholder = translations[lang].name;
+      document.getElementById("signup-email").placeholder = translations[lang].email;
+      document.getElementById("signup-password").placeholder = translations[lang].password;
+      document.getElementById("signup-btn").innerText = translations[lang].signupBtn;
+
+      document.body.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
+    }
+
+    function showForm(type) {
+      document.getElementById('login-form').classList.remove('active');
+      document.getElementById('signup-form').classList.remove('active');
+      document.getElementById(`${type}-form`).classList.add('active');
+    }
+
+    function login() {
+      alert("Login logic not implemented yet.");
+    }
+
+    function signup() {
+      alert("Sign-up logic not implemented yet.");
+    }
+
+    setLang('en');
+  </script>
+
+</body>
+</html>
