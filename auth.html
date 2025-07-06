@@ -2,174 +2,201 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Authentication | MyDigitalStore</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Authentication | MyDigitalStore</title>
   <style>
-    body {
+    /* Reset بسيط */
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
       background: #f2f2f2;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
     }
 
     .auth-container {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
+      background: #fff;
+      width: 400px;
+      padding: 30px 40px;
+      border-radius: 12px;
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
-      width: 90%;
-      max-width: 400px;
     }
 
-    h2 {
+    .auth-container h2 {
       text-align: center;
+      margin-bottom: 25px;
       color: #333;
     }
 
-    input {
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #555;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
       width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
+      padding: 12px 15px;
+      border: 1.8px solid #ddd;
       border-radius: 8px;
+      font-size: 15px;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      border-color: #4a90e2;
+      outline: none;
     }
 
     button {
       width: 100%;
-      padding: 12px;
-      background: linear-gradient(to right, #2193b0, #6dd5ed);
+      padding: 14px;
+      background-color: #4a90e2;
       color: white;
+      font-size: 16px;
       border: none;
-      border-radius: 8px;
-      font-weight: bold;
+      border-radius: 10px;
       cursor: pointer;
-      margin-top: 10px;
+      font-weight: 700;
+      transition: background-color 0.3s ease;
     }
 
-    .lang-buttons, .toggle-buttons {
+    button:hover {
+      background-color: #357ABD;
+    }
+
+    .toggle-btns {
+      margin: 20px 0 10px;
       text-align: center;
-      margin-bottom: 20px;
     }
 
-    .lang-btn, .toggle-btn {
-      margin: 0 5px;
-      padding: 5px 10px;
-      border: none;
-      background: #ddd;
-      border-radius: 5px;
-      cursor: pointer;
+    .toggle-btns button {
+      width: auto;
+      padding: 8px 20px;
+      margin: 0 10px;
+      background-color: #ddd;
+      color: #333;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
     }
 
-    .lang-btn:hover, .toggle-btn:hover {
-      background: #bbb;
+    .toggle-btns button.active {
+      background-color: #4a90e2;
+      color: white;
     }
 
-    .form-section {
+    .hidden {
       display: none;
-    }
-
-    .form-section.active {
-      display: block;
     }
   </style>
 </head>
 <body>
 
   <div class="auth-container">
-    <div class="lang-buttons">
-      <button class="lang-btn" onclick="setLang('en')">English</button>
-      <button class="lang-btn" onclick="setLang('ar')">العربية</button>
-      <button class="lang-btn" onclick="setLang('fr')">Français</button>
+    <div class="toggle-btns">
+      <button id="login-btn" class="active">Login</button>
+      <button id="signup-btn">Sign Up</button>
     </div>
 
-    <div class="toggle-buttons">
-      <button class="toggle-btn" onclick="showForm('login')">Login</button>
-      <button class="toggle-btn" onclick="showForm('signup')">Sign Up</button>
-    </div>
+    <!-- نموذج الدخول -->
+    <form id="login-form">
+      <h2>Login</h2>
+      <div class="form-group">
+        <label for="login-email">Email</label>
+        <input type="email" id="login-email" placeholder="Enter your email" required />
+      </div>
+      <div class="form-group">
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" placeholder="Enter your password" required />
+      </div>
+      <button type="submit">Log In</button>
+    </form>
 
-    <!-- Login Form -->
-    <div id="login-form" class="form-section active">
-      <h2 id="login-title">Login</h2>
-      <input type="email" id="login-email" placeholder="Email">
-      <input type="password" id="login-password" placeholder="Password">
-      <button onclick="login()" id="login-btn">Login</button>
-    </div>
-
-    <!-- Sign Up Form -->
-    <div id="signup-form" class="form-section">
-      <h2 id="signup-title">Sign Up</h2>
-      <input type="text" id="signup-name" placeholder="Full Name">
-      <input type="email" id="signup-email" placeholder="Email">
-      <input type="password" id="signup-password" placeholder="Password">
-      <button onclick="signup()" id="signup-btn">Sign Up</button>
-    </div>
+    <!-- نموذج التسجيل -->
+    <form id="signup-form" class="hidden">
+      <h2>Sign Up</h2>
+      <div class="form-group">
+        <label for="signup-username">Username</label>
+        <input type="text" id="signup-username" placeholder="Choose a username" required />
+      </div>
+      <div class="form-group">
+        <label for="signup-email">Email</label>
+        <input type="email" id="signup-email" placeholder="Enter your email" required />
+      </div>
+      <div class="form-group">
+        <label for="signup-password">Password</label>
+        <input type="password" id="signup-password" placeholder="Create a password" required />
+      </div>
+      <div class="form-group">
+        <label for="signup-password-confirm">Confirm Password</label>
+        <input type="password" id="signup-password-confirm" placeholder="Confirm your password" required />
+      </div>
+      <button type="submit">Sign Up</button>
+    </form>
   </div>
 
   <script>
-    const translations = {
-      en: {
-        loginTitle: "Login",
-        signupTitle: "Sign Up",
-        email: "Email",
-        password: "Password",
-        name: "Full Name",
-        loginBtn: "Login",
-        signupBtn: "Sign Up"
-      },
-      ar: {
-        loginTitle: "تسجيل الدخول",
-        signupTitle: "إنشاء حساب",
-        email: "البريد الإلكتروني",
-        password: "كلمة المرور",
-        name: "الاسم الكامل",
-        loginBtn: "دخول",
-        signupBtn: "تسجيل"
-      },
-      fr: {
-        loginTitle: "Connexion",
-        signupTitle: "Créer un compte",
-        email: "Email",
-        password: "Mot de passe",
-        name: "Nom complet",
-        loginBtn: "Se connecter",
-        signupBtn: "S'inscrire"
+    // التحكم في تبديل النماذج
+    const loginBtn = document.getElementById('login-btn');
+    const signupBtn = document.getElementById('signup-btn');
+
+    const loginForm = document.getElementById('login-form');
+    const signupForm = document.getElementById('signup-form');
+
+    loginBtn.addEventListener('click', () => {
+      loginBtn.classList.add('active');
+      signupBtn.classList.remove('active');
+      loginForm.classList.remove('hidden');
+      signupForm.classList.add('hidden');
+    });
+
+    signupBtn.addEventListener('click', () => {
+      signupBtn.classList.add('active');
+      loginBtn.classList.remove('active');
+      signupForm.classList.remove('hidden');
+      loginForm.classList.add('hidden');
+    });
+
+    // تحقق بسيط عند التسجيل
+    signupForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const password = document.getElementById('signup-password').value;
+      const confirmPassword = document.getElementById('signup-password-confirm').value;
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
       }
-    };
 
-    function setLang(lang) {
-      document.getElementById("login-title").innerText = translations[lang].loginTitle;
-      document.getElementById("signup-title").innerText = translations[lang].signupTitle;
+      // هنا تقدر تضيف إرسال البيانات للباك إند
+      alert("Sign up successful! (Simulation)");
+      signupForm.reset();
+    });
 
-      document.getElementById("login-email").placeholder = translations[lang].email;
-      document.getElementById("login-password").placeholder = translations[lang].password;
-      document.getElementById("login-btn").innerText = translations[lang].loginBtn;
-
-      document.getElementById("signup-name").placeholder = translations[lang].name;
-      document.getElementById("signup-email").placeholder = translations[lang].email;
-      document.getElementById("signup-password").placeholder = translations[lang].password;
-      document.getElementById("signup-btn").innerText = translations[lang].signupBtn;
-
-      document.body.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
-    }
-
-    function showForm(type) {
-      document.getElementById('login-form').classList.remove('active');
-      document.getElementById('signup-form').classList.remove('active');
-      document.getElementById(`${type}-form`).classList.add('active');
-    }
-
-    function login() {
-      alert("Login logic not implemented yet.");
-    }
-
-    function signup() {
-      alert("Sign-up logic not implemented yet.");
-    }
-
-    setLang('en');
+    // تسجيل دخول - فقط محاكاة
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // هنا تقدر تضيف إرسال بيانات الدخول للتحقق
+      alert("Logged in! (Simulation)");
+      loginForm.reset();
+    });
   </script>
 
 </body>
