@@ -1,0 +1,20 @@
+<h1 id="title">Welcome to MyDigitalStore</h1>
+<p id="description">Discover amazing products</p>
+<button id="login">Login</button>
+<button id="signup">Sign Up</button>
+
+<select onchange="changeLanguage(this.value)">
+  <option value="en">English</option>
+  <option value="fr">Français</option>
+  <option value="ar">العربية</option>
+</select>
+
+<script src="translations.js"></script>
+<script>
+  function changeLanguage(lang) {
+    document.getElementById('title').textContent = translations[lang].title;
+    document.getElementById('description').textContent = translations[lang].description;
+    document.getElementById('login').textContent = translations[lang].login;
+    document.getElementById('signup').textContent = translations[lang].signup;
+  }
+</script>
