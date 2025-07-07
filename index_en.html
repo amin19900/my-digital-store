@@ -38,5 +38,48 @@
       }
     }
   </script>
+</body><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Website - English</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- شريط إعلانات متحرك -->
+  <div id="ad-banner">
+    <div id="ad-content">🔥 Special offers! Check out the videos and images below! 🔥</div>
+  </div>
+
+  <!-- أزرار تغيير اللغة -->
+  <div class="language-switcher">
+    <img src="flags/ar.png" alt="Arabic" onclick="changeLanguage('ar')" />
+    <img src="flags/fr.png" alt="French" onclick="changeLanguage('fr')" />
+    <img src="flags/en.png" alt="English" onclick="changeLanguage('en')" />
+  </div>
+
+  <!-- مكان صور الإعلانات والفيديوهات -->
+  <div class="carousel">
+    <div class="slides">
+      <div class="slide"><img src="ads/ad1.jpg" alt="Ad 1" /></div>
+      <div class="slide"><img src="ads/ad2.jpg" alt="Ad 2" /></div>
+      <div class="slide"><img src="ads/ad3.jpg" alt="Ad 3" /></div>
+    </div>
+    <div class="carousel-buttons">
+      <button id="prevBtn">&lt; Prev</button>
+      <button id="nextBtn">Next &gt;</button>
+    </div>
+  </div>
+
+  <video width="90%" controls style="display: block; margin:20px auto; border-radius:8px;">
+    <source src="ads/promo.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- ربط ملف جافاسكريبت -->
+  <script src="script.js"></script>
+
 </body>
+</html>
 </html>
