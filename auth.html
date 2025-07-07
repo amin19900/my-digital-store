@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
   <meta charset="UTF-8" />
-  <title>Authentication | MyDigitalStore</title>
+  <title>تسجيل الدخول | MyDigitalStore</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
       margin: 0;
@@ -78,20 +78,21 @@
 
   <div class="auth-container">
     <h2>تسجيل الدخول / التسجيل</h2>
-    <form>
-      <input type="text" placeholder="اسم المستخدم" required />
-      <input type="email" placeholder="البريد الإلكتروني" required />
-      <input type="password" placeholder="كلمة المرور" required />
-      <button type="submit" class="auth-btn">تسجيل الدخول</button>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="اسم المستخدم" required />
+      <input type="email" id="email" placeholder="البريد الإلكتروني" required />
+      <input type="password" id="password" placeholder="كلمة المرور" required />
+      <button type="button" class="auth-btn" onclick="login()">تسجيل الدخول</button>
     </form>
 
     <div class="lang-switch">
       <p>🌐 تغيير اللغة:</p>
-      <a href="index_ar.html"><img src="flags/ar.png" alt="عربي"></a>
-      <a href="index_fr.html"><img src="flags/fr.png" alt="Français"></a>
-      <a href="index_en.html"><img src="flags/en.png" alt="English"></a>
+      <img src="flags/ar.png" alt="عربي" onclick="changeLang('ar')">
+      <img src="flags/fr.png" alt="Français" onclick="changeLang('fr')">
+      <img src="flags/en.png" alt="English" onclick="changeLang('en')">
     </div>
   </div>
 
+  <script src="script.js"></script>
 </body>
 </html>
