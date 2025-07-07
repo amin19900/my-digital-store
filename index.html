@@ -36,3 +36,19 @@
   <script src="main.js"></script>
 </body>
 </html>
+<header>
+  <h1 data-translate="site_name">My Digital Store</h1>
+  <nav>
+    <a href="#" data-translate="nav_home">Home</a>
+    <a href="#" data-translate="nav_shop">Shop</a>
+    <a href="#" data-translate="nav_contact">Contact</a>
+    <div id="cart-icon" style="position: relative; cursor: pointer;">
+      🛒 <span id="cart-count" style="position: absolute; top: -10px; right: -10px; background: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.8rem;">0</span>
+    </div>
+    <select class="language-select" onchange="changeLanguage(this.value)">
+      <option value="en">English</option>
+      <option value="fr">Français</option>
+      <option value="ar">العربية</option>
+    </select>
+  </nav>
+</header>
