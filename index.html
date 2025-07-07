@@ -1,61 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-translate="site_title">My Digital Store</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <h1 data-translate="site_name">My Digital Store</h1>
-    <nav>
-      <a href="#" data-translate="nav_home">Home</a>
-      <a href="#" data-translate="nav_shop">Shop</a>
-      <a href="#" data-translate="nav_contact">Contact</a>
-      <select class="language-select" onchange="changeLanguage(this.value)">
-        <option value="en">English</option>
-        <option value="fr">Français</option>
-        <option value="ar">العربية</option>
-      </select>
-    </nav>
-  </header>
+<!-- الرسالة الترحيبية -->
+<h2 id="welcome-msg">مرحبا بك في متجرنا الرقمي!</h2>
 
-  <main>
-    <h2 data-translate="welcome_title">Welcome to the best store!</h2>
-    <p data-translate="welcome_msg">We offer the best products at the best prices.</p>
-    <button class="btn" data-translate="btn_shop_now">Shop Now</button>
-    <section class="products">
-      <div class="product">
-        <h3 data-translate="product_title">Sample Product</h3>
-        <p data-translate="product_desc">This is a great product.</p>
-      </div>
-    </section>
-  </main>
+<!-- أزرار اللغة -->
+<div style="margin-bottom: 1rem;">
+  <button id="btn-ar">العربية</button>
+  <button id="btn-en">English</button>
+  <button id="btn-fr">Français</button>
+</div>
 
-  <script src="main.js"></script>
-</body>
-</html>
-<header>
-  <h1 data-translate="site_name">My Digital Store</h1>
-  <nav>
-    <a href="#" data-translate="nav_home">Home</a>
-    <a href="#" data-translate="nav_shop">Shop</a>
-    <a href="#" data-translate="nav_contact">Contact</a>
-    <div id="cart-icon" style="position: relative; cursor: pointer;">
-      🛒 <span id="cart-count" style="position: absolute; top: -10px; right: -10px; background: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.8rem;">0</span>
-    </div>
-    <select class="language-select" onchange="changeLanguage(this.value)">
-      <option value="en">English</option>
-      <option value="fr">Français</option>
-      <option value="ar">العربية</option>
-    </select>
-  </nav>
-</header>
-<main>
-  <h2 data-translate="welcome_title">Welcome to the best store!</h2>
-  <p data-translate="welcome_msg">We offer the best products at the best prices.</p>
-  <button class="btn" data-translate="btn_shop_now">Shop Now</button>
-
-  <section class="products" id="product-list"></section>
-</main>
+<!-- مكان عرض المنتجات -->
+<section id="product-list" class="products"></section>
