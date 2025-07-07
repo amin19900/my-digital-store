@@ -1,215 +1,150 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MyDigitalStore</title>
+  <title>الصفحة الرئيسية</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      background: #f2f2f2;
-      color: #333;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
     }
 
     header {
-      background: #1a1a1a;
+      background-color: #007bff;
+      padding: 15px 20px;
       color: white;
-      padding: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 24px;
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
     }
 
-    .search-bar {
+    .nav-links a {
+      color: white;
+      margin-left: 15px;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .lang-flags {
+      margin-left: auto;
       display: flex;
       gap: 10px;
-      margin-top: 10px;
+      align-items: center;
     }
 
-    .search-bar input {
-      padding: 8px;
-      border-radius: 20px;
-      border: none;
-      width: 200px;
-    }
-
-    .search-bar button {
-      padding: 8px 16px;
-      background: orange;
-      border: none;
-      border-radius: 20px;
-      font-weight: bold;
+    .lang-flags img {
+      width: 30px;
+      height: 20px;
       cursor: pointer;
+      border-radius: 4px;
+      border: 1px solid #fff;
+      transition: transform 0.3s ease;
     }
 
-    nav {
-      background: #222;
-      padding: 10px;
-      display: flex;
-      gap: 15px;
-      justify-content: center;
+    .lang-flags img:hover {
+      transform: scale(1.1);
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .lang-buttons {
+    .hero {
       text-align: center;
-      margin: 20px 0;
+      padding: 80px 20px;
     }
 
-    .lang-btn {
-      margin: 0 10px;
-      padding: 10px 20px;
-      cursor: pointer;
+    .hero h1 {
+      font-size: 36px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #666;
+    }
+
+    .cta-button {
+      margin-top: 30px;
+      padding: 12px 25px;
+      background-color: #007bff;
+      color: white;
       border: none;
-      border-radius: 20px;
-      background: linear-gradient(to right, #6a11cb, #2575fc);
-      color: white;
-      font-weight: bold;
-      transition: 0.3s ease;
-    }
-
-    .lang-btn:hover {
-      opacity: 0.8;
-    }
-
-    .products {
-      padding: 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    .product {
-      background: white;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-
-    .product img {
-      width: 100%;
-      max-height: 120px;
-      object-fit: cover;
-    }
-
-    .product button {
-      background: gold;
-      border: none;
-      padding: 10px;
-      margin-top: 10px;
-      font-weight: bold;
-      border-radius: 5px;
+      border-radius: 6px;
+      font-size: 16px;
       cursor: pointer;
+      transition: background 0.3s;
     }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #1a1a1a;
-      color: white;
+    .cta-button:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>MyDigitalStore</h1>
-    <div class="search-bar">
-      <input type="text" placeholder="Search products..." />
-      <button>Search</button>
+    <div class="logo" id="siteName">متجري الرقمي</div>
+    <div class="nav-links">
+      <a href="auth.html">تسجيل الدخول</a>
+      <a href="ads.html">الإعلانات</a>
+      <a href="chat.html">الدردشة</a>
+    </div>
+    <div class="lang-flags">
+      <img src="flags/ma.png" alt="العربية" onclick="changeLanguage('ar')" />
+      <img src="flags/fr.png" alt="Français" onclick="changeLanguage('fr')" />
+      <img src="flags/us.png" alt="English" onclick="changeLanguage('en')" />
     </div>
   </header>
 
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Products</a>
-    <a href="#">Deals</a>
-    <a href="#">Contact</a>
-    <a href="#">Cart</a>
-  </nav>
-
-  <div class="lang-buttons">
-    <button class="lang-btn" onclick="setLang('ar')">العربية</button>
-    <button class="lang-btn" onclick="setLang('en')">English</button>
-    <button class="lang-btn" onclick="setLang('fr')">Français</button>
-  </div>
-
-  <section class="products">
-    <div class="product">
-      <img src="https://via.placeholder.com/200x120" alt="Digital Product 1" />
-      <h3 id="prod1-title">Digital Product 1</h3>
-      <p id="prod1-desc">A short description of product 1.</p>
-      <button id="prod1-btn">Add to Cart</button>
-    </div>
-
-    <div class="product">
-      <img src="https://via.placeholder.com/200x120" alt="Digital Product 2" />
-      <h3 id="prod2-title">Digital Product 2</h3>
-      <p id="prod2-desc">A short description of product 2.</p>
-      <button id="prod2-btn">Add to Cart</button>
-    </div>
+  <section class="hero">
+    <h1 id="heroTitle">مرحبًا بك في متجري الرقمي</h1>
+    <p id="heroDesc">اكتشف أفضل الإعلانات الرقمية والصور والعروض الترويجية في مكان واحد.</p>
+    <a href="ads.html"><button class="cta-button" id="exploreBtn">استكشاف الإعلانات</button></a>
   </section>
 
-  <footer>
-    <p>&copy; 2025 MyDigitalStore. All rights reserved.</p>
-  </footer>
-
   <script>
+    const lang = localStorage.getItem('siteLang') || 'ar';
+
     const translations = {
+      ar: {
+        siteName: "متجري الرقمي",
+        heroTitle: "مرحبًا بك في متجري الرقمي",
+        heroDesc: "اكتشف أفضل الإعلانات الرقمية والصور والعروض الترويجية في مكان واحد.",
+        exploreBtn: "استكشاف الإعلانات",
+      },
+      fr: {
+        siteName: "Ma Boutique Digitale",
+        heroTitle: "Bienvenue sur notre boutique digitale",
+        heroDesc: "Découvrez les meilleures annonces et promotions numériques en un seul endroit.",
+        exploreBtn: "Explorer les annonces",
+      },
       en: {
-        prod1: {
-          title: "Digital Product 1",
-          desc: "A short description of product 1.",
-          btn: "Add to Cart"
-        },
-        prod2:
-<body>
-  <!-- شريط الإعلانات -->
-  <div id="ad-banner" style="overflow:hidden; background:#004d00; color:#fff; font-weight:bold; padding:10px 0; white-space: nowrap;">
-    <div id="ad-content" style="display:inline-block; padding-left:100%; animation: scroll-left 20s linear infinite;">
-      🔥 عروض خاصة من شركات عالمية! تسوق الآن واحصل على خصومات كبيرة! 🔥
-    </div>
-  </div>
+        siteName: "My Digital Store",
+        heroTitle: "Welcome to our Digital Store",
+        heroDesc: "Explore the best digital ads, images, and promos in one place.",
+        exploreBtn: "Explore Ads",
+      }
+    };
 
-  <!-- باقي محتوى الصفحة -->
-</body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Ad Showcase</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+    function applyLanguage(lang) {
+      const t = translations[lang];
+      document.getElementById("siteName").textContent = t.siteName;
+      document.getElementById("heroTitle").textContent = t.heroTitle;
+      document.getElementById("heroDesc").textContent = t.heroDesc;
+      document.getElementById("exploreBtn").textContent = t.exploreBtn;
+    }
 
-  <h1 style="text-align: center;">🚀 إعلانات مميزة</h1>
+    function changeLanguage(selectedLang) {
+      localStorage.setItem('siteLang', selectedLang);
+      location.reload();
+    }
 
-  <div class="carousel">
-    <div class="slides">
-      <div class="slide"><img src="ads/ad1.jpg" alt="Ad 1"></div>
-      <div class="slide"><img src="ads/ad2.jpg" alt="Ad 2"></div>
-      <div class="slide"><img src="ads/ad3.jpg" alt="Ad 3"></div>
-    </div>
-    <div class="carousel-buttons">
-      <button id="prevBtn">&lt; السابق</button>
-      <button id="nextBtn">التالي &gt;</button>
-    </div>
-  </div>
+    applyLanguage(lang);
+  </script>
 
-  <script src="script.js"></script>
 </body>
 </html>
-
