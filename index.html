@@ -1,19 +1,12 @@
-<main>
-  <h2 data-translate="welcome_title">Welcome to the best store!</h2>
-  <p data-translate="welcome_msg">We offer the best products at the best prices.</p>
-  <button class="btn" data-translate="btn_shop_now">Shop Now</button>
-
-  <section>
-    <h3 data-translate="products_title">Our Products</h3>
-    <div class="products">
-      <div class="product">
-        <h4 data-translate="product1_name">Product 1</h4>
-        <p data-translate="product1_desc">This is a great product.</p>
-      </div>
-      <div class="product">
-        <h4 data-translate="product2_name">Product 2</h4>
-        <p data-translate="product2_desc">This product is very popular.</p>
-      </div>
-    </div>
-  </section>
-</main>
+.products {
+  display: flex;
+  gap: 20px;
+  margin-top: 1rem;
+}
+.product {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  width: 200px;
+}
