@@ -1,97 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>My Amazon Clone</title>
-<link rel="stylesheet" href="assets/css/style.css" />
-</head>
-<body>
-<header>
-  <div class="logo">
-    <h1>MyAmazon</h1>
-  </div>
-  <nav class="nav-main">
-    <a href="index.html">Home</a>
-    <a href="login.html">Sign In</a>
-    <a href="cart.html">Cart</a>
-    <select id="language-select" onchange="changeLanguage(this.value)">
-      <option value="en">English</option>
-      <option value="fr">Français</option>
-      <option value="ar">العربية</option>
-    </select>
-  </nav>
-  <div class="search-bar">
-    <input type="text" id="search-input" placeholder="Search products..." />
-    <button onclick="searchProducts()">Search</button>
-  </div>
-</header>
-
 <main>
-  <section class="categories">
-    <h2>Categories</h2>
-    <div class="category-list">
-      <button>Electronics</button>
-      <button>Clothing</button>
-      <button>Books</button>
-      <button>Toys</button>
-      <button>Home & Kitchen</button>
-    </div>
-  </section>
+  <h2 data-translate="welcome_title">Welcome to the best store!</h2>
+  <p data-translate="welcome_msg">We offer the best products at the best prices.</p>
+  <button class="btn" data-translate="btn_shop_now">Shop Now</button>
 
-  <section class="products">
-    <h2>Featured Products</h2>
-    <div class="product-grid" id="product-grid">
-      <!-- Products will be loaded here dynamically -->
+  <section>
+    <h3 data-translate="products_title">Our Products</h3>
+    <div class="products">
+      <div class="product">
+        <h4 data-translate="product1_name">Product 1</h4>
+        <p data-translate="product1_desc">This is a great product.</p>
+      </div>
+      <div class="product">
+        <h4 data-translate="product2_name">Product 2</h4>
+        <p data-translate="product2_desc">This product is very popular.</p>
+      </div>
     </div>
   </section>
 </main>
-
-<footer>
-  <p>&copy; 2025 MyAmazon. All rights reserved.</p>
-</footer>
-
-<script src="js/main.js"></script>
-<script>
-  // Language translations object
-  const translations = {
-    en: {
-      home: "Home",
-      signIn: "Sign In",
-      cart: "Cart",
-      searchPlaceholder: "Search products...",
-      categories: "Categories",
-      featuredProducts: "Featured Products"
-    },
-    fr: {
-      home: "Accueil",
-      signIn: "Connexion",
-      cart: "Panier",
-      searchPlaceholder: "Rechercher des produits...",
-      categories: "Catégories",
-      featuredProducts: "Produits en vedette"
-    },
-    ar: {
-      home: "الرئيسية",
-      signIn: "تسجيل الدخول",
-      cart: "عربة التسوق",
-      searchPlaceholder: "ابحث عن المنتجات...",
-      categories: "الفئات",
-      featuredProducts: "المنتجات المميزة"
-    }
-  };
-
-  function changeLanguage(lang) {
-    document.querySelector('nav .nav-main a[href="index.html"]').textContent = translations[lang].home;
-    document.querySelector('nav .nav-main a[href="login.html"]').textContent = translations[lang].signIn;
-    document.querySelector('nav .nav-main a[href="cart.html"]').textContent = translations[lang].cart;
-    document.getElementById('search-input').placeholder = translations[lang].searchPlaceholder;
-    document.querySelector('main section.categories h2').textContent = translations[lang].categories;
-    document.querySelector('main section.products h2').textContent = translations[lang].featuredProducts;
-  }
-
-  // Initialize default language
-  changeLanguage('en');
-</script>
-</body>
-</html>
