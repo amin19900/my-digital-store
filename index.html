@@ -1,180 +1,116 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>متجري الرقمي</title>
+  <meta charset="UTF-8">
+  <title>MyDigitalStore</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0; background: #f9f9f9;
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+      direction: ltr;
     }
+
     header {
-      background: #007bff;
+      background-color: #232f3e;
       color: white;
-      padding: 15px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
+      padding: 10px 20px;
+      text-align: center;
     }
-    .logo {
-      font-weight: bold;
-      font-size: 22px;
+
+    .container {
+      margin-top: 20px;
+      text-align: center;
     }
-    nav a {
-      color: white;
-      margin-left: 15px;
-      cursor: pointer;
-      text-decoration: none;
+
+    button, select {
+      margin: 10px;
+      padding: 10px 15px;
       font-size: 16px;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #cce5ff;
-    }
-    .lang-flags img {
-      width: 30px;
-      height: 20px;
+      border-radius: 5px;
+      border: none;
       cursor: pointer;
-      border-radius: 3px;
-      border: 1px solid white;
-      margin-left: 10px;
-      transition: transform 0.3s;
     }
-    .lang-flags img:hover {
-      transform: scale(1.1);
+
+    select {
+      background-color: #eee;
     }
-    #content {
-      padding: 30px 20px;
-      max-width: 900px;
-      margin: auto;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
-      min-height: 300px;
+
+    button {
+      background-color: #ffa41c;
+      color: #000;
+    }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 14px;
+      color: #666;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="logo" id="siteName">متجري الرقمي</div>
-  <nav>
-    <a href="#" onclick="loadPage('home', true)">الرئيسية</a>
-    <a href="#" onclick="loadPage('ads', true)">الإعلانات</a>
-    <a href="#" onclick="loadPage('chat', true)">الدردشة</a>
-    <a href="#" onclick="loadPage('auth', true)">تسجيل الدخول</a>
-  </nav>
-  <div class="lang-flags">
-    <img src="flags/ma.png" alt="ar" onclick="changeLanguage('ar')" />
-    <img src="flags/fr.png" alt="fr" onclick="changeLanguage('fr')" />
-    <img src="flags/us.png" alt="en" onclick="changeLanguage('en')" />
+  <header>
+    <h1 id="title">Welcome to MyDigitalStore</h1>
+  </header>
+
+  <div class="container">
+    <p id="description">Discover amazing products that suit your needs</p>
+
+    <div>
+      <button id="login">Login</button>
+      <button id="signup">Sign Up</button>
+    </div>
+
+    <div>
+      <label for="langSelect"><strong>🌐 Language:</strong></label>
+      <select id="langSelect" onchange="changeLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="ar">العربية</option>
+      </select>
+    </div>
   </div>
-</header>
 
-<div id="content">
-  <!-- المحتوى المحمل ديناميكياً -->
-</div>
+  <footer>
+    &copy; 2025 MyDigitalStore. All rights reserved.
+  </footer>
 
-<script>
-  const translations = {
-    ar: {
-      siteName: "متجري الرقمي",
-      homeTitle: "مرحبا بك في الصفحة الرئيسية",
-      homeDesc: "هذا هو المحتوى الافتراضي.",
-      adsTitle: "صفحة الإعلانات",
-      adsDesc: "هنا تعرض الإعلانات.",
-      chatTitle: "صفحة الدردشة",
-      chatDesc: "تواصل معنا مباشرة.",
-      authTitle: "تسجيل الدخول",
-      authDesc: "من فضلك سجل دخولك للمتابعة."
-    },
-    fr: {
-      siteName: "Ma Boutique Digitale",
-      homeTitle: "Bienvenue à la page d'accueil",
-      homeDesc: "Ceci est le contenu par défaut.",
-      adsTitle: "Page des annonces",
-      adsDesc: "Ici vous trouvez les annonces.",
-      chatTitle: "Page de chat",
-      chatDesc: "Contactez-nous directement.",
-      authTitle: "Connexion",
-      authDesc: "Veuillez vous connecter pour continuer."
-    },
-    en: {
-      siteName: "My Digital Store",
-      homeTitle: "Welcome to the home page",
-      homeDesc: "This is the default content.",
-      adsTitle: "Ads Page",
-      adsDesc: "Here you find the ads.",
-      chatTitle: "Chat Page",
-      chatDesc: "Contact us directly.",
-      authTitle: "Login",
-      authDesc: "Please login to continue."
-    }
-  };
-
-  let currentLang = localStorage.getItem('siteLang') || 'ar';
-
-  function changeLanguage(lang) {
-    currentLang = lang;
-    localStorage.setItem('siteLang', lang);
-    applyLanguage();
-    loadPage(currentPage, false);
-  }
-
-  function applyLanguage() {
-    document.getElementById('siteName').textContent = translations[currentLang].siteName;
-  }
-
-  let currentPage = 'home';
-
-  async function loadPage(page, pushState = false) {
-    currentPage = page;
-    const t = translations[currentLang];
-
-    // تحديث عنوان الصفحة حسب الصفحة واللغة
-    let titleMap = {
-      home: t.homeTitle,
-      ads: t.adsTitle,
-      chat: t.chatTitle,
-      auth: t.authTitle
+  <script>
+    const translations = {
+      en: {
+        title: "Welcome to MyDigitalStore",
+        description: "Discover amazing products that suit your needs",
+        login: "Login",
+        signup: "Sign Up"
+      },
+      fr: {
+        title: "Bienvenue chez MyDigitalStore",
+        description: "Découvrez des produits incroyables adaptés à vos besoins",
+        login: "Connexion",
+        signup: "S'inscrire"
+      },
+      ar: {
+        title: "مرحبًا بك في متجرنا الرقمي",
+        description: "اكتشف منتجات رائعة تناسب احتياجاتك",
+        login: "تسجيل الدخول",
+        signup: "إنشاء حساب"
+      }
     };
-    document.title = titleMap[page] || t.siteName;
 
-    // جلب المحتوى من ملفات html منفصلة (محتوى بسيط بدون <html>)
-    try {
-      const response = await fetch(page + '.html');
-      if (!response.ok) throw new Error('صفحة غير موجودة');
-      const html = await response.text();
-      document.getElementById('content').innerHTML = html;
-    } catch (e) {
-      document.getElementById('content').innerHTML = `<h1>خطأ</h1><p>${e.message}</p>`;
+    function changeLanguage(lang) {
+      document.getElementById("title").textContent = translations[lang].title;
+      document.getElementById("description").textContent = translations[lang].description;
+      document.getElementById("login").textContent = translations[lang].login;
+      document.getElementById("signup").textContent = translations[lang].signup;
+
+      // تغيير اتجاه الصفحة إذا كانت اللغة عربية
+      document.body.dir = lang === "ar" ? "rtl" : "ltr";
     }
-
-    if(pushState) {
-      history.pushState({page: page}, '', '#' + page);
-    }
-  }
-
-  // استماع لتغيير الحالة عند استخدام أزرار المتصفح (رجوع/تقدم)
-  window.addEventListener('popstate', event => {
-    if(event.state && event.state.page) {
-      loadPage(event.state.page, false);
-    } else {
-      loadPage('home', false);
-    }
-  });
-
-  // تهيئة الموقع أول مرة
-  applyLanguage();
-  let hashPage = location.hash.replace('#', '');
-  if(hashPage) {
-    loadPage(hashPage, false);
-  } else {
-    loadPage('home', false);
-  }
-</script>
+  </script>
 
 </body>
 </html>
