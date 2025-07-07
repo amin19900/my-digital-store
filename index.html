@@ -3,148 +3,178 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>الصفحة الرئيسية</title>
+  <title>متجري الرقمي</title>
   <style>
     body {
-      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f9f9f9;
+      margin: 0; background: #f9f9f9;
     }
-
     header {
-      background-color: #007bff;
-      padding: 15px 20px;
+      background: #007bff;
       color: white;
+      padding: 15px 20px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
-
     .logo {
-      font-size: 22px;
       font-weight: bold;
+      font-size: 22px;
     }
-
-    .nav-links a {
+    nav a {
       color: white;
       margin-left: 15px;
+      cursor: pointer;
       text-decoration: none;
-      font-size: 15px;
+      font-size: 16px;
+      transition: color 0.3s;
     }
-
-    .lang-flags {
-      margin-left: auto;
-      display: flex;
-      gap: 10px;
-      align-items: center;
+    nav a:hover {
+      color: #cce5ff;
     }
-
     .lang-flags img {
       width: 30px;
       height: 20px;
       cursor: pointer;
-      border-radius: 4px;
-      border: 1px solid #fff;
-      transition: transform 0.3s ease;
+      border-radius: 3px;
+      border: 1px solid white;
+      margin-left: 10px;
+      transition: transform 0.3s;
     }
-
     .lang-flags img:hover {
       transform: scale(1.1);
     }
-
-    .hero {
-      text-align: center;
-      padding: 80px 20px;
-    }
-
-    .hero h1 {
-      font-size: 36px;
-      margin-bottom: 15px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: #666;
-    }
-
-    .cta-button {
-      margin-top: 30px;
-      padding: 12px 25px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .cta-button:hover {
-      background-color: #0056b3;
+    #content {
+      padding: 30px 20px;
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+      min-height: 300px;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="logo" id="siteName">متجري الرقمي</div>
-    <div class="nav-links">
-      <a href="auth.html">تسجيل الدخول</a>
-      <a href="ads.html">الإعلانات</a>
-      <a href="chat.html">الدردشة</a>
-    </div>
-    <div class="lang-flags">
-      <img src="flags/ma.png" alt="العربية" onclick="changeLanguage('ar')" />
-      <img src="flags/fr.png" alt="Français" onclick="changeLanguage('fr')" />
-      <img src="flags/us.png" alt="English" onclick="changeLanguage('en')" />
-    </div>
-  </header>
+<header>
+  <div class="logo" id="siteName">متجري الرقمي</div>
+  <nav>
+    <a href="#" onclick="loadPage('home', true)">الرئيسية</a>
+    <a href="#" onclick="loadPage('ads', true)">الإعلانات</a>
+    <a href="#" onclick="loadPage('chat', true)">الدردشة</a>
+    <a href="#" onclick="loadPage('auth', true)">تسجيل الدخول</a>
+  </nav>
+  <div class="lang-flags">
+    <img src="flags/ma.png" alt="ar" onclick="changeLanguage('ar')" />
+    <img src="flags/fr.png" alt="fr" onclick="changeLanguage('fr')" />
+    <img src="flags/us.png" alt="en" onclick="changeLanguage('en')" />
+  </div>
+</header>
 
-  <section class="hero">
-    <h1 id="heroTitle">مرحبًا بك في متجري الرقمي</h1>
-    <p id="heroDesc">اكتشف أفضل الإعلانات الرقمية والصور والعروض الترويجية في مكان واحد.</p>
-    <a href="ads.html"><button class="cta-button" id="exploreBtn">استكشاف الإعلانات</button></a>
-  </section>
+<div id="content">
+  <!-- المحتوى المحمل ديناميكياً -->
+</div>
 
-  <script>
-    const lang = localStorage.getItem('siteLang') || 'ar';
+<script>
+  const translations = {
+    ar: {
+      siteName: "متجري الرقمي",
+      homeTitle: "مرحبا بك في الصفحة الرئيسية",
+      homeDesc: "هذا هو المحتوى الافتراضي.",
+      adsTitle: "صفحة الإعلانات",
+      adsDesc: "هنا تعرض الإعلانات.",
+      chatTitle: "صفحة الدردشة",
+      chatDesc: "تواصل معنا مباشرة.",
+      authTitle: "تسجيل الدخول",
+      authDesc: "من فضلك سجل دخولك للمتابعة."
+    },
+    fr: {
+      siteName: "Ma Boutique Digitale",
+      homeTitle: "Bienvenue à la page d'accueil",
+      homeDesc: "Ceci est le contenu par défaut.",
+      adsTitle: "Page des annonces",
+      adsDesc: "Ici vous trouvez les annonces.",
+      chatTitle: "Page de chat",
+      chatDesc: "Contactez-nous directement.",
+      authTitle: "Connexion",
+      authDesc: "Veuillez vous connecter pour continuer."
+    },
+    en: {
+      siteName: "My Digital Store",
+      homeTitle: "Welcome to the home page",
+      homeDesc: "This is the default content.",
+      adsTitle: "Ads Page",
+      adsDesc: "Here you find the ads.",
+      chatTitle: "Chat Page",
+      chatDesc: "Contact us directly.",
+      authTitle: "Login",
+      authDesc: "Please login to continue."
+    }
+  };
 
-    const translations = {
-      ar: {
-        siteName: "متجري الرقمي",
-        heroTitle: "مرحبًا بك في متجري الرقمي",
-        heroDesc: "اكتشف أفضل الإعلانات الرقمية والصور والعروض الترويجية في مكان واحد.",
-        exploreBtn: "استكشاف الإعلانات",
-      },
-      fr: {
-        siteName: "Ma Boutique Digitale",
-        heroTitle: "Bienvenue sur notre boutique digitale",
-        heroDesc: "Découvrez les meilleures annonces et promotions numériques en un seul endroit.",
-        exploreBtn: "Explorer les annonces",
-      },
-      en: {
-        siteName: "My Digital Store",
-        heroTitle: "Welcome to our Digital Store",
-        heroDesc: "Explore the best digital ads, images, and promos in one place.",
-        exploreBtn: "Explore Ads",
-      }
+  let currentLang = localStorage.getItem('siteLang') || 'ar';
+
+  function changeLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('siteLang', lang);
+    applyLanguage();
+    loadPage(currentPage, false);
+  }
+
+  function applyLanguage() {
+    document.getElementById('siteName').textContent = translations[currentLang].siteName;
+  }
+
+  let currentPage = 'home';
+
+  async function loadPage(page, pushState = false) {
+    currentPage = page;
+    const t = translations[currentLang];
+
+    // تحديث عنوان الصفحة حسب الصفحة واللغة
+    let titleMap = {
+      home: t.homeTitle,
+      ads: t.adsTitle,
+      chat: t.chatTitle,
+      auth: t.authTitle
     };
+    document.title = titleMap[page] || t.siteName;
 
-    function applyLanguage(lang) {
-      const t = translations[lang];
-      document.getElementById("siteName").textContent = t.siteName;
-      document.getElementById("heroTitle").textContent = t.heroTitle;
-      document.getElementById("heroDesc").textContent = t.heroDesc;
-      document.getElementById("exploreBtn").textContent = t.exploreBtn;
+    // جلب المحتوى من ملفات html منفصلة (محتوى بسيط بدون <html>)
+    try {
+      const response = await fetch(page + '.html');
+      if (!response.ok) throw new Error('صفحة غير موجودة');
+      const html = await response.text();
+      document.getElementById('content').innerHTML = html;
+    } catch (e) {
+      document.getElementById('content').innerHTML = `<h1>خطأ</h1><p>${e.message}</p>`;
     }
 
-    function changeLanguage(selectedLang) {
-      localStorage.setItem('siteLang', selectedLang);
-      location.reload();
+    if(pushState) {
+      history.pushState({page: page}, '', '#' + page);
     }
+  }
 
-    applyLanguage(lang);
-  </script>
+  // استماع لتغيير الحالة عند استخدام أزرار المتصفح (رجوع/تقدم)
+  window.addEventListener('popstate', event => {
+    if(event.state && event.state.page) {
+      loadPage(event.state.page, false);
+    } else {
+      loadPage('home', false);
+    }
+  });
+
+  // تهيئة الموقع أول مرة
+  applyLanguage();
+  let hashPage = location.hash.replace('#', '');
+  if(hashPage) {
+    loadPage(hashPage, false);
+  } else {
+    loadPage('home', false);
+  }
+</script>
 
 </body>
 </html>
