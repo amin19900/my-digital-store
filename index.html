@@ -1,74 +1,116 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MyAmazonClone</title>
+  <title data-translate="site_title">My Digital Store</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; background-color: #f2f2f2; }header {
-  background-color: #131921;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-}
-header .logo { font-size: 24px; font-weight: bold; }
-header .search-bar {
-  flex: 1;
-  margin: 0 20px;
-}
-header input[type="text"] {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-}
-header .actions {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+    header {
+      background-color: #232f3e;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      color: #ff9900;
+    }
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .language-select {
+      margin-left: 20px;
+    }
+    main {
+      padding: 2rem;
+    }
+    .btn {
+      background-color: #ff9900;
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 data-translate="site_name">My Digital Store</h1>
+    <nav>
+      <a href="#" data-translate="nav_home">Home</a>
+      <a href="#" data-translate="nav_shop">Shop</a>
+      <a href="#" data-translate="nav_contact">Contact</a>
+      <select class="language-select" onchange="changeLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="ar">العربية</option>
+      </select>
+    </nav>
+  </header>
+  <main>
+    <h2 data-translate="welcome_title">Welcome to the best store!</h2>
+    <p data-translate="welcome_msg">We offer the best products at the best prices.</p>
+    <button class="btn" data-translate="btn_shop_now">Shop Now</button>
+  </main>
 
-nav {
-  background-color: #232f3e;
-  color: white;
-  display: flex;
-  padding: 10px 20px;
-  overflow-x: auto;
-}
-nav div {
-  margin-right: 20px;
-  white-space: nowrap;
-  cursor: pointer;
-}
+  <script>
+    const translations = {
+      en: {
+        site_title: "My Digital Store",
+        site_name: "My Digital Store",
+        nav_home: "Home",
+        nav_shop: "Shop",
+        nav_contact: "Contact",
+        welcome_title: "Welcome to the best store!",
+        welcome_msg: "We offer the best products at the best prices.",
+        btn_shop_now: "Shop Now"
+      },
+      fr: {
+        site_title: "Ma Boutique Digitale",
+        site_name: "Ma Boutique Digitale",
+        nav_home: "Accueil",
+        nav_shop: "Boutique",
+        nav_contact: "Contact",
+        welcome_title: "Bienvenue dans la meilleure boutique !",
+        welcome_msg: "Nous offrons les meilleurs produits aux meilleurs prix.",
+        btn_shop_now: "Acheter maintenant"
+      },
+      ar: {
+        site_title: "متجري الرقمي",
+        site_name: "متجري الرقمي",
+        nav_home: "الرئيسية",
+        nav_shop: "المتجر",
+        nav_contact: "اتصل بنا",
+        welcome_title: "مرحبا بكم في أفضل متجر!",
+        welcome_msg: "نحن نقدم أفضل المنتجات بأفضل الأسعار.",
+        btn_shop_now: "تسوق الآن"
+      }
+    };
 
-.ads {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 20px;
-  justify-content: center;
-}
-.ads img {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 10px;
-}
-
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-.product {
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  padding: 10px;
-  text-align: center;
-}
-.product
-
+    function changeLanguage(lang) {
+      const elements = document.querySelectorAll('[data-translate]');
+      elements.forEach(el => {
+        const key = el.getAttribute('data-translate');
+        if (translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+        if (key === 'site_title') {
+          document.title = translations[lang][key];
+        }
+      });
+    }
+  </script>
+</body>
+</html>؟
