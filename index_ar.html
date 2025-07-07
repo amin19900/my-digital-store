@@ -1,37 +1,91 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <title>موقعي بالعربية</title>
+  <title>الصفحة الرئيسية | متجر رقمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body { font-family: Arial, sans-serif; direction: rtl; }
-    .language-switcher img {
-      width: 40px;
-      cursor: pointer;
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      direction: rtl;
+      background-color: #f4f4f4;
+      text-align: right;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #007bff;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    .ad-section {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .ad-section img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+
+    .lang-switch {
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .lang-switch img {
+      width: 30px;
       margin: 0 5px;
+      cursor: pointer;
+      border-radius: 4px;
     }
   </style>
 </head>
 <body>
-  <div class="language-switcher">
-    <img src="flags/ar.png" alt="العربية" onclick="changeLanguage('ar')" />
-    <img src="flags/fr.png" alt="Français" onclick="changeLanguage('fr')" />
-    <img src="flags/en.png" alt="English" onclick="changeLanguage('en')" />
-  </div>
 
-  <h1>مرحبا بكم في موقعي</h1>
-  <p>هذه الصفحة باللغة العربية.</p>
+  <header>
+    <h1>👋 مرحباً بك في متجرنا الرقمي</h1>
+  </header>
 
-  <script>
-    function changeLanguage(lang) {
-      if(lang === 'ar') {
-        window.location.href = 'index_ar.html';
-      } else if(lang === 'fr') {
-        window.location.href = 'index_fr.html';
-      } else if(lang === 'en') {
-        window.location.href = 'index_en.html';
-      }
-    }
-  </script>
+  <main>
+    <p>هنا ستجد أفضل المنتجات الرقمية والإعلانات المتجددة.</p>
+
+    <div class="ad-section">
+      <h2>إعلانات مميزة</h2>
+      <img src="ads/ad1.jpg" alt="إعلان 1" />
+      <img src="ads/ad2.jpg" alt="إعلان 2" />
+      <img src="ads/ad3.jpg" alt="إعلان 3" />
+    </div>
+
+    <div class="lang-switch">
+      🌍 تغيير اللغة:
+      <a href="index_en.html"><img src="flags/en.png" alt="English"></a>
+      <a href="index_fr.html"><img src="flags/fr.png" alt="Français"></a>
+      <a href="index_ar.html"><img src="flags/ar.png" alt="العربية"></a>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 - متجر رقمي. جميع الحقوق محفوظة.
+  </footer>
+
 </body>
 </html>
