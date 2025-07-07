@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "Smartphone Samsung A23",
+    "price": "2500 MAD",
+    "image": "https://via.placeholder.com/200x200.png?text=Samsung+A23"
+  },
+  {
+    "id": 2,
+    "title": "Casque Bluetooth JBL",
+    "price": "450 MAD",
+    "image": "https://via.placeholder.com/200x200.png?text=JBL+Casque"
+  },
+  {
+    "id": 3,
+    "title": "Laptop HP i5",
+    "price": "6900 MAD",
+    "image": "https://via.placeholder.com/200x200.png?text=HP+Laptop"
+  }
+]
