@@ -1,9 +1,3 @@
-function changeLanguage(lang) {
-  if (lang === 'ar') window.location.href = 'index_ar.html';
-  else if (lang === 'fr') window.location.href = 'index_fr.html';
-  else if (lang === 'en') window.location.href = 'index_en.html';
-}
-
 let currentIndex = 0;
 const slides = document.querySelectorAll('.slide');
 
