@@ -1,12 +1,45 @@
-<!-- الرسالة الترحيبية -->
-<h2 id="welcome-msg">مرحبا بك في متجرنا الرقمي!</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Digital Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<!-- أزرار اللغة -->
-<div style="margin-bottom: 1rem;">
-  <button id="btn-ar">العربية</button>
-  <button id="btn-en">English</button>
-  <button id="btn-fr">Français</button>
-</div>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="logo">MyStore</div>
+    <input type="text" placeholder="Search for products..." class="search-box" />
+    <div class="nav-links">
+      <a href="#">Sign In</a>
+      <a href="#">Cart</a>
+    </div>
+  </header>
 
-<!-- مكان عرض المنتجات -->
-<section id="product-list" class="products"></section>
+  <!-- Navigation Bar -->
+  <nav class="main-nav">
+    <a href="#">Home</a>
+    <a href="#">Electronics</a>
+    <a href="#">Books</a>
+    <a href="#">Clothing</a>
+    <a href="#">More</a>
+  </nav>
+
+  <!-- Product Grid -->
+  <main class="product-section">
+    <h2>Featured Products</h2>
+    <div class="products-grid" id="products-container">
+      <!-- JS will inject products here -->
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>© 2025 My Digital Store | All rights reserved.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
