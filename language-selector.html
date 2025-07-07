@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <title>اختيار اللغة | Language Selector</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #fafafa;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    .language-selector {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+    }
+    .language-option {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 15px;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      width: 110px;
+      background-color: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .language-option:hover {
+      border-color: #007bff;
+      box-shadow: 0 4px 12px rgba(0,123,255,0.3);
+      background-color: #e7f0ff;
+    }
+    .language-option img {
+      width: 50px;
+      height: 35px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      margin-bottom: 10px;
+    }
+    .language-option span {
+      font-weight: bold;
+      font-size: 16px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>اختر لغتك / Choose Your Language</h2>
+
+  <div class="language-selector">
+    <div class="language-option" onclick="changeLanguage('ar')">
+      <img src="flags/ma.png" alt="علم المغرب" />
+      <span>العربية</span>
+    </div>
+    <div class="language-option" onclick="changeLanguage('fr')">
+      <img src="flags/fr.png" alt="علم فرنسا" />
+      <span>Français</span>
+    </div>
+    <div class="language-option" onclick="changeLanguage('en')">
+      <img src="flags/us.png" alt="علم الولايات المتحدة" />
+      <span>English</span>
+    </div>
+  </div>
+
+  <script>
+    function changeLanguage(lang) {
+      alert('تم اختيار اللغة: ' + lang);
+      // هنا تقدر تضيف كود لتغيير لغة الموقع فعلياً
+      // مثلاً تخزين اللغة في LocalStorage، أو تحديث المحتوى، أو إعادة تحميل الصفحة مع اللغة الجديدة
+    }
+  </script>
+
+</body>
+</html>
