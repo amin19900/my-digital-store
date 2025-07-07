@@ -1,0 +1,46 @@
+{
+  "ads": [
+    {
+      "type": "image",
+      "file": "ad1.jpg",
+      "titles": {
+        "ar": "منتج رائع",
+        "fr": "Produit génial",
+        "en": "Awesome Product"
+      },
+      "descs": {
+        "ar": "إعلان لصورة منتج جديد بأسلوب مميز.",
+        "fr": "Une image promotionnelle d’un nouveau produit.",
+        "en": "An ad image of a new product with style."
+      }
+    },
+    {
+      "type": "video",
+      "file": "ad2.mp4",
+      "titles": {
+        "ar": "إعلان ترويجي",
+        "fr": "Publicité vidéo",
+        "en": "Promo Video"
+      },
+      "descs": {
+        "ar": "فيديو قصير يوضح مميزات منتج مبتكر.",
+        "fr": "Vidéo courte montrant les caractéristiques.",
+        "en": "Short video showing key features."
+      }
+    },
+    {
+      "type": "image",
+      "file": "ad3.jpg",
+      "titles": {
+        "ar": "عرض خاص",
+        "fr": "Offre spéciale",
+        "en": "Special Offer"
+      },
+      "descs": {
+        "ar": "تخفيضات كبرى على منتجاتنا!",
+        "fr": "Réductions énormes sur nos produits !",
+        "en": "Huge discounts on our products!"
+      }
+    }
+  ]
+}
