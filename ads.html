@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>الإعلانات</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .filter-button {
+      background: #007bff;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: background 0.3s;
+    }
+
+    .filter-button:hover {
+      background: #0056b3;
+    }
+
+    .ads-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .ad-card {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .ad-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .ad-card img, .ad-card video {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .ad-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    .ad-desc {
+      color: #666;
+      font-size: 14px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>📢 إعلانات مميزة</h1>
+
+  <div class="filter-bar">
+    <button class="filter-button" onclick="filterAds('all')">الكل</button>
+    <button class="filter-button" onclick="filterAds('image')">صور</button>
+    <button class="filter-button" onclick="filterAds('video')">فيديوهات</button>
+  </div>
+
+  <div class="ads-grid" id="adsContainer">
+    <!-- إعلان صورة -->
+    <div class="ad-card" data-type="image">
+      <img src="ads/ad1.jpg" alt="إعلان منتج 1" />
+      <div class="ad-title">منتج رائع</div>
+      <div class="ad-desc">هذا إعلان لصورة منتج جديد بأسلوب مميز.</div>
+    </div>
+
+    <!-- إعلان فيديو -->
+    <div class="ad-card" data-type="video">
+      <video controls>
+        <source src="ads/ad2.mp4" type="video/mp4" />
+        متصفحك لا يدعم تشغيل الفيديو.
+      </video>
+      <div class="ad-title">إعلان ترويجي</div>
+      <div class="ad-desc">فيديو قصير يوضح مميزات منتج مبتكر.</div>
+    </div>
+
+    <!-- إعلان صورة أخرى -->
+    <div class="ad-card" data-type="image">
+      <img src="ads/ad3.jpg" alt="إعلان منتج 2" />
+      <div class="ad-title">عرض خاص</div>
+      <div class="ad-desc">تخفيضات كبرى على منتجاتنا!</div>
+    </div>
+  </div>
+
+  <script>
+    function filterAds(type) {
+      const ads = document.querySelectorAll('.ad-card');
+      ads.forEach(ad => {
+        if (type === 'all' || ad.dataset.type === type) {
+          ad.style.display = 'block';
+        } else {
+          ad.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
