@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>الإعلانات</title>
+  <title>📢 إعلانات</title>
   <style>
     body {
       margin: 0;
@@ -14,8 +14,8 @@
 
     h1 {
       text-align: center;
+      margin-bottom: 20px;
       color: #333;
-      margin-bottom: 30px;
     }
 
     .filter-bar {
@@ -52,11 +52,16 @@
       padding: 15px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.5s forwards;
     }
 
-    .ad-card:hover {
-      transform: translateY(-5px);
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .ad-card img, .ad-card video {
@@ -77,11 +82,16 @@
       font-size: 14px;
     }
 
+    .no-ads {
+      text-align: center;
+      color: #999;
+      margin-top: 40px;
+    }
   </style>
 </head>
 <body>
 
-  <h1>📢 إعلانات مميزة</h1>
+  <h1 id="adsTitle">📢 إعلانات</h1>
 
   <div class="filter-bar">
     <button class="filter-button" onclick="filterAds('all')">الكل</button>
@@ -89,43 +99,56 @@
     <button class="filter-button" onclick="filterAds('video')">فيديوهات</button>
   </div>
 
-  <div class="ads-grid" id="adsContainer">
-    <!-- إعلان صورة -->
-    <div class="ad-card" data-type="image">
-      <img src="ads/ad1.jpg" alt="إعلان منتج 1" />
-      <div class="ad-title">منتج رائع</div>
-      <div class="ad-desc">هذا إعلان لصورة منتج جديد بأسلوب مميز.</div>
-    </div>
+  <div class="ads-grid" id="adsContainer"></div>
 
-    <!-- إعلان فيديو -->
-    <div class="ad-card" data-type="video">
-      <video controls>
-        <source src="ads/ad2.mp4" type="video/mp4" />
-        متصفحك لا يدعم تشغيل الفيديو.
-      </video>
-      <div class="ad-title">إعلان ترويجي</div>
-      <div class="ad-desc">فيديو قصير يوضح مميزات منتج مبتكر.</div>
-    </div>
-
-    <!-- إعلان صورة أخرى -->
-    <div class="ad-card" data-type="image">
-      <img src="ads/ad3.jpg" alt="إعلان منتج 2" />
-      <div class="ad-title">عرض خاص</div>
-      <div class="ad-desc">تخفيضات كبرى على منتجاتنا!</div>
-    </div>
-  </div>
+  <div class="no-ads" id="noAdsMessage" style="display: none;">لا توجد إعلانات متوفرة حالياً.</div>
 
   <script>
+    const lang = localStorage.getItem('siteLang') || 'ar'; // استرجاع اللغة المختارة
+
+    async function loadAds() {
+      const res = await fetch('ads-data.json');
+      const data = await res.json();
+      const adsContainer = document.getElementById('adsContainer');
+      adsContainer.innerHTML = '';
+
+      data.ads.forEach(ad => {
+        const card = document.createElement('div');
+        card.className = 'ad-card';
+        card.setAttribute('data-type', ad.type);
+
+        let media = '';
+        if (ad.type === 'image') {
+          media = `<img src="ads/${ad.file}" alt="${ad.titles[lang]}" />`;
+        } else if (ad.type === 'video') {
+          media = `<video controls><source src="ads/${ad.file}" type="video/mp4" /></video>`;
+        }
+
+        card.innerHTML = `
+          ${media}
+          <div class="ad-title">${ad.titles[lang]}</div>
+          <div class="ad-desc">${ad.descs[lang]}</div>
+        `;
+
+        adsContainer.appendChild(card);
+      });
+    }
+
     function filterAds(type) {
       const ads = document.querySelectorAll('.ad-card');
+      let found = false;
       ads.forEach(ad => {
         if (type === 'all' || ad.dataset.type === type) {
           ad.style.display = 'block';
+          found = true;
         } else {
           ad.style.display = 'none';
         }
       });
+      document.getElementById('noAdsMessage').style.display = found ? 'none' : 'block';
     }
+
+    loadAds();
   </script>
 
 </body>
